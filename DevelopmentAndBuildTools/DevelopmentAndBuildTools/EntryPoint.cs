@@ -8,7 +8,7 @@ namespace DevelopmentAndBuildTools
         {
             try
             {
-                Console.WriteLine(GetMaxCountOfUniqueSequenceOfLetters(args[0]);
+                Console.WriteLine(GetMaxCountOfUniqueSequenceOfLetters(args[0]));
             }
             catch (Exception exception)
             {
