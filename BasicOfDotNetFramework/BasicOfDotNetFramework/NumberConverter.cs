@@ -13,5 +13,39 @@ namespace BasicOfDotNetFramework
             {11,"B"},{12,"C"},{13,"D"},{14,"E"},{15,"F"},{16,"G"},{17,"H"},{18,"I"},{19,"J"},{20,"K"}
         };
 
+        /// <summary>
+        /// Method which convert number to needed number system
+        /// </summary>
+        /// <param name="number">Number which needed to cinvert</param>
+        /// <param name="numberSystem">Number system in which we convert</param>
+        /// <returns>Converted number</returns>
+        public string GetConvertNumber(uint number, uint numberSystem)
+        {
+            if (numberSystem<21 && numberSystem > 1)
+            {
+                uint residual;
+                StringBuilder inverseNumber = new StringBuilder();
+
+                while (true)
+                {
+                    residual = number % numberSystem;
+                    number /= numberSystem;
+                    inverseNumber.Insert(0, residualToNumberSystem[residual]);
+
+                    if (number == 0)
+                    {
+                        break;
+                    }
+                }
+
+                return inverseNumber.ToString();
+            }
+
+            else
+            {
+                throw new ArgumentOutOfRangeException(nameof(numberSystem));
+            }
+        }
+
     }
 }
