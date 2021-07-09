@@ -16,12 +16,12 @@ namespace BasicOfDotNetFramework
         /// <summary>
         /// Method which convert number to needed number system
         /// </summary>
-        /// <param name="number">Number which needed to cinvert</param>
+        /// <param name="number">Number which needed to convert</param>
         /// <param name="numberSystem">Number system in which we convert</param>
         /// <returns>Converted number</returns>
         public string GetConvertNumber(uint number, uint numberSystem)
         {
-            if (numberSystem<21 && numberSystem > 1)
+            if (numberSystem < 21 && numberSystem > 1)
             {
                 uint residual;
                 StringBuilder inverseNumber = new StringBuilder();
