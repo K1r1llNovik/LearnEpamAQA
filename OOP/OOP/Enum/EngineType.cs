@@ -2,6 +2,9 @@
 
 namespace OOP
 {
+    /// <summary>
+    /// Enum that contain enigne types
+    /// </summary>
     public enum EngineType
     {
         Diesel,
