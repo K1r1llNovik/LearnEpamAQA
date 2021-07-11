@@ -7,7 +7,7 @@ namespace OOP
     /// <summary>
     /// Abstract class for defining vehicles
     /// </summary>
-    abstract class Vehicle
+    public abstract class Vehicle
     {
         /// <summary>
         /// Get and Set chassis
@@ -30,11 +30,11 @@ namespace OOP
         /// <param name="vehicleChassis"></param>
         /// <param name="vehicleEngine"></param>
         /// <param name="vehicleTransmissin"></param>
-        public Vehicle(Chassis vehicleChassis, Engine vehicleEngine, Transmission vehicleTransmissin)
+        public Vehicle(Chassis vehicleChassis, Engine vehicleEngine, Transmission vehicleTransmission)
         {
             VehicleChassis = vehicleChassis;
             VehicleEngine = vehicleEngine;
-            VehicleTransmission = vehicleTransmissin;
+            VehicleTransmission = vehicleTransmission;
         }
 
         /// <summary>
