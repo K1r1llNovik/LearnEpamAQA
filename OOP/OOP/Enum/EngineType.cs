@@ -1,10 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace OOP.Enum
+namespace OOP
 {
-    class EngineType
+    public enum EngineType
     {
+        Diesel,
+        Gasoline,
+        Electrical,
+        Gas
     }
 }
