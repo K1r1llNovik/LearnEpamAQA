@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OOP.Vehicles
+namespace OOP
 {
     public class Car: Vehicle
     {
