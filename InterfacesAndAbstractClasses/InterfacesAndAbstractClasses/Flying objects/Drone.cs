@@ -64,10 +64,12 @@ namespace InterfacesAndAbstractClasses
                 throw new ArgumentException("Method can't get fly time, becuse drone can't fly this distance");
             }
 
-            DateTime time = DateTime.Now;
+            
             double nonStopTime = distance / _speed;
-            double stopTime = nonStopTime / _stopPeriod * _stopTime;
-            return time.AddHours(nonStopTime - stopTime);
+            double stopTime = nonStopTime * _stopPeriod * _stopTime;
+            double currentTime = nonStopTime - stopTime;
+            DateTime time = DateTime.Now;
+            return time.AddHours(currentTime);
 
         }
     }
