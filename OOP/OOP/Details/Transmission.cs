@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OOP
 {
+    /// <summary>
+    /// Class represent transmission
+    /// </summary>
+    [Serializable]
     public class Transmission
     {
         /// <summary>
@@ -20,6 +22,11 @@ namespace OOP
         /// Get and set manufacturer of transmission
         /// </summary>
         public string Manufacturer { get; set; }
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Transmission() { }
 
         /// <summary>
         /// Constructor initializes class fields

@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OOP
 {
+    [Serializable]
     public class Car: Vehicle
     {
         private byte _numberOfDoors;
@@ -29,13 +28,19 @@ namespace OOP
         }
 
         /// <summary>
+        /// default constructor
+        /// </summary>
+        public Car() { }
+
+        /// <summary>
         /// Constructor initializes class fields
         /// </summary>
         /// <param name="numberOfDoors"></param>
         /// <param name="chassis"></param>
         /// <param name="engine"></param>
         /// <param name="transmission"></param>
-        public Car(byte numberOfDoors, Chassis chassis, Engine engine, Transmission transmission) : base(chassis, engine, transmission)
+        public Car(byte numberOfDoors, Chassis chassis, Engine engine, Transmission transmission) 
+               : base(chassis, engine, transmission)
         {
             NumberOfDoors = numberOfDoors;
         }

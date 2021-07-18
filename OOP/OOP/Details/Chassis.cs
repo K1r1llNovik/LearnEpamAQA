@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OOP
 {
+    /// <summary>
+    /// Class represent chassis
+    /// </summary>
+    [Serializable]
     public class Chassis
     {
         /// <summary>
@@ -20,6 +22,11 @@ namespace OOP
         /// Set and get permissible load in Chassis
         /// </summary>
         public double PermissibleLoad { get; set; }
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Chassis() { }
 
         /// <summary>
         /// Constructor initializes class fields

@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OOP
 {
+    /// <summary>
+    /// Class represent engine
+    /// </summary>
+    [Serializable]
     public class Engine
     {
         /// <summary>
@@ -25,6 +27,11 @@ namespace OOP
         /// Set and get engine serial number
         /// </summary>
         public string SerialNumber { get; set; }
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Engine() { }
 
         /// <summary>
         /// Constructor initializes class fields

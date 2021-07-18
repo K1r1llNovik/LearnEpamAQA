@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OOP
 {
+    [Serializable]
     public class Truck : Vehicle
     {
         private double _maximumLiftingCapacity;
@@ -29,13 +28,19 @@ namespace OOP
         }
 
         /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Truck() { }
+
+        /// <summary>
         /// Constructor initializes class fields
         /// </summary>
         /// <param name="maximumLiftingCapacity"></param>
         /// <param name="chassis"></param>
         /// <param name="engine"></param>
         /// <param name="transmission"></param>
-        public Truck(double maximumLiftingCapacity, Chassis chassis, Engine engine, Transmission transmission) : base(chassis, engine, transmission)
+        public Truck(double maximumLiftingCapacity, Chassis chassis, Engine engine, Transmission transmission) 
+               : base(chassis, engine, transmission)
         {
             MaximumLiftingCapacity = _maximumLiftingCapacity;
         }

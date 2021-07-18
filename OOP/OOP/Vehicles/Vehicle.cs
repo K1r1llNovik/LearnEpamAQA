@@ -1,12 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Xml.Serialization;
 
 namespace OOP
 {
     /// <summary>
     /// Abstract class for defining vehicles
     /// </summary>
+    [XmlInclude(typeof(Car))]
+    [XmlInclude(typeof(Truck))]
+    [XmlInclude(typeof(Bus))]
+    [XmlInclude(typeof(Scooter))]
+    [Serializable]
     public abstract class Vehicle
     {
         /// <summary>
@@ -23,6 +27,11 @@ namespace OOP
         /// Get and set transmission
         /// </summary>
         public Transmission VehicleTransmission { get; set; }
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Vehicle() { }
 
         /// <summary>
         /// Constructor initialisez class fields
