@@ -39,7 +39,6 @@ namespace BasicOfDotNetFramework
 
                 return inverseNumber.ToString();
             }
-
             else
             {
                 throw new ArgumentOutOfRangeException("Number system should be equal between 2 and 20");
