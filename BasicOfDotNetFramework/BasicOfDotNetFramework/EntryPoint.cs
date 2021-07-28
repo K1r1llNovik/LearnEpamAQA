@@ -6,15 +6,21 @@ namespace BasicOfDotNetFramework
     {
         static void Main(string[] args)
         {
-            try
+            if (args.Length < 2)
             {
-                NumberConverter number = new NumberConverter();
-                Console.WriteLine(number.GetConvertNumber(20, 0));
+                throw new ArgumentException("Invalid meaning of arguments");
             }
-
-            catch(Exception exception)
+            else
             {
-                Console.WriteLine(exception.Message);
+                try
+                {
+                    string result = NumberConverter.GetConvertNumber(uint.Parse(args[0]), uint.Parse(args[1]));
+                    Console.WriteLine(result);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }
