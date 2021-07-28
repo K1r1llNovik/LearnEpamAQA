@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace InterfacesAndAbstractClasses
 {
@@ -9,32 +7,27 @@ namespace InterfacesAndAbstractClasses
         /// <summary>
         /// Start speed of plain, km/h
         /// </summary>
-        private const int _startSpeed = 200;
+        private const int StartSpeed = 200;
 
         /// <summary>
         /// How much speed increases every 10 km of flight, km/h
         /// </summary>
-        private const int _increasedSpeed = 10;
+        private const int IncreasedSpeed = 10;
 
         /// <summary>
         /// What distance is required for the plane to increase speed
         /// </summary>
-        private const int _increasedDistance = 10;
+        private const int IncreaseDistance = 10;
 
         /// <summary>
         /// Fuel consumtion per 1000 km, kg
         /// </summary>
-        private const int _fuelConsumption = 1750;
+        private const int FuelConsumption = 1750;
 
         /// <summary>
         /// Fuel tank, liters
         /// </summary>
-        public double FuelCapacity { get; set; }
-
-        /// <summary>
-        /// Speed, km/h
-        /// </summary>
-        public int Speed { get; set; }
+        private double FuelCapacity { get; set; }
 
         /// <summary>
         /// Constructor initializes class fields
@@ -54,7 +47,7 @@ namespace InterfacesAndAbstractClasses
         {
             double distance = Postion.GetDistance(newCoordinate);
 
-            if (distance > _fuelConsumption * FuelCapacity / 1000)
+            if (distance > FuelCapacity * FuelCapacity / 1000)
             {
                 throw new ArgumentException("Not enought fuel");
             }
@@ -72,15 +65,15 @@ namespace InterfacesAndAbstractClasses
         public DateTime GetFlyTime(Coordinate newCoordinate)
         {
             DateTime time = DateTime.Now;
-            int speed = _startSpeed;
+            int speed = StartSpeed;
             double flighTime = 0;
             double distance = Postion.GetDistance(newCoordinate);
 
             while (distance > 0)
             {
-                flighTime += _increasedDistance / speed;
-                speed += _increasedSpeed;
-                distance -= _increasedDistance;
+                flighTime += IncreaseDistance / speed;
+                speed += IncreasedSpeed;
+                distance -= IncreaseDistance;
             }
             flighTime += distance / speed;
 

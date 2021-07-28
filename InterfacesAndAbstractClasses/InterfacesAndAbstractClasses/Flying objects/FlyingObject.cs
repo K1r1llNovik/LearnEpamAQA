@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace InterfacesAndAbstractClasses
 {
@@ -19,7 +17,5 @@ namespace InterfacesAndAbstractClasses
         {
             Postion = position;
         }
-
-
     }
 }

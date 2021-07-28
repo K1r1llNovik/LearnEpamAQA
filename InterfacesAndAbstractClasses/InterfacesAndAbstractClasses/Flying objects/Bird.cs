@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace InterfacesAndAbstractClasses
 {
@@ -9,17 +7,17 @@ namespace InterfacesAndAbstractClasses
         /// <summary>
         /// Minimum speed, km/h
         /// </summary>
-        private const int _minimalSpeed = 0;
+        private const int MinimalSpeed = 0;
 
         /// <summary>
         /// Maximum speed, km/h
         /// </summary>
-        private const int _maximumSpeed = 20;
+        private const int MaximumSpeed = 20;
 
         /// <summary>
         /// Maximum flying distance, km
         /// </summary>
-        private const int _maximumDistance = 100;
+        private const int MaximumDistance = 100;
 
         /// <summary>
         /// Get and set speed of bird
@@ -33,7 +31,7 @@ namespace InterfacesAndAbstractClasses
         public Bird(Coordinate position) : base(position)
         {
             Random randomSpeed = new Random();
-            Speed = randomSpeed.Next(_minimalSpeed, _maximumSpeed);
+            Speed = randomSpeed.Next(MinimalSpeed, MaximumSpeed);
         }
 
         /// <summary>
@@ -44,7 +42,7 @@ namespace InterfacesAndAbstractClasses
         {
             double distance = Postion.GetDistance(newCoordinate);
 
-            if (distance > _maximumDistance)
+            if (distance > MaximumDistance)
             {
                 throw new ArgumentException("Bird can't fly this distance");
             }
@@ -61,7 +59,7 @@ namespace InterfacesAndAbstractClasses
         /// <returns></returns>
         public DateTime GetFlyTime(Coordinate newCoordinate)
         {
-            if (Speed == _minimalSpeed)
+            if (Speed == MinimalSpeed)
             {
                 throw new ArgumentException("Speed cannot be equal 0");
             }

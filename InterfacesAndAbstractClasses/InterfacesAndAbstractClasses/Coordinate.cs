@@ -6,9 +6,9 @@ namespace InterfacesAndAbstractClasses
 {
     public struct Coordinate
     {
-        private double _x;
-        private double _y;
-        private double _z;
+        private readonly double _x;
+        private readonly double _y;
+        private readonly double _z;
 
         /// <summary>
         /// Constructor for structure coordinate
@@ -32,7 +32,5 @@ namespace InterfacesAndAbstractClasses
         {
             return Math.Sqrt(Math.Abs(Math.Pow(coordinate._x - _x, 2) + Math.Pow(coordinate._y - _y, 2) + Math.Pow(coordinate._z - _z, 2)));
         }
-
-
     }
 }
