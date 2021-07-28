@@ -21,9 +21,9 @@ namespace DevelopmentAndBuildTools
         /// </summary>
         /// <param name="str">Calculated string</param>
         /// <returns>Max count of unique symbols</returns>
-        public static int GetMaxCountOfUniqueSequenceOfLetters(string str)
+        static int GetMaxCountOfUniqueSequenceOfLetters(string sequenceOfCounting)
         {
-            if (string.IsNullOrEmpty(str))
+            if (string.IsNullOrEmpty(sequenceOfCounting))
             {
                 return 0;
             }
@@ -31,14 +31,14 @@ namespace DevelopmentAndBuildTools
             int count = 1;
             int maxCount = 1;
 
-            for(int i = 0; i < str.Length-1; i++)
+            for(int i = 0; i < sequenceOfCounting.Length-1; i++)
             {
-                if (str[i] != str[i + 1])
+                if (sequenceOfCounting[i] != sequenceOfCounting[i + 1])
                 {
                     count++;
                 }
 
-                if (str[i] == str[i + 1])
+                if (sequenceOfCounting[i] == sequenceOfCounting[i + 1])
                 {
                     if (count > maxCount)
                     {
