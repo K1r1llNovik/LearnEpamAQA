@@ -31,7 +31,7 @@ namespace OOP
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Vehicle() { }
+        protected Vehicle() { }
 
         /// <summary>
         /// Constructor initialisez class fields
@@ -39,7 +39,7 @@ namespace OOP
         /// <param name="vehicleChassis"></param>
         /// <param name="vehicleEngine"></param>
         /// <param name="vehicleTransmissin"></param>
-        public Vehicle(Chassis vehicleChassis, Engine vehicleEngine, Transmission vehicleTransmission)
+        protected Vehicle(Chassis vehicleChassis, Engine vehicleEngine, Transmission vehicleTransmission)
         {
             VehicleChassis = vehicleChassis;
             VehicleEngine = vehicleEngine;
@@ -50,7 +50,7 @@ namespace OOP
         /// Method that returns all informtaion about the vehicles
         /// </summary>
         /// <returns></returns>
-        virtual public string GetInfo()
+        public virtual string GetInfo()
         {
             return $"{VehicleEngine.GetInfo()}/n" + $"{VehicleChassis.GetInfo()}/n" + $"{ VehicleTransmission.GetInfo()}/n";
         }

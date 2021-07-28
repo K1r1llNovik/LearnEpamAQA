@@ -13,22 +13,7 @@ namespace OOP
         /// <summary>
         /// Get and set maximum number of passengers
         /// </summary>
-        public byte MaximumNumberOfPassengers
-        {
-            get
-            {
-                return _maximumNumberOfPassengers;
-            }
-
-            set
-            {
-                if(value < 0)
-                {
-                    throw new ArgumentException(nameof(_maximumNumberOfPassengers));
-                }
-                _maximumNumberOfPassengers = value;
-            }
-        }
+        public byte MaximumNumberOfPassengers { get; set; }
 
         /// <summary>
         /// Default constructor

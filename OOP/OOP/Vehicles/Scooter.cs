@@ -53,7 +53,5 @@ namespace OOP
         {
             return base.GetInfo() + $"Number of mirrors: {NumberOfMirrors}";
         }
-
-
     }
 }
