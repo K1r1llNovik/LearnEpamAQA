@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace OOP.Exceptions
+namespace OOP
 {
 public class UpdateAutoException : Exception
     {

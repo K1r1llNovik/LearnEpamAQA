@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace OOP
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CarPark
     {
         public List<Vehicle> Vehicles { get; set; }
@@ -111,6 +114,32 @@ namespace OOP
             return selectedVehicles;
         }
 
+        /// <summary>
+        /// Method which replaces the old vehicle with a new one
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="vehicle"></param>
+        public void UpdateAuto(int id, Vehicle vehicle)
+        {
+            if (id<0 || id >= Vehicles.Count)
+            {
+                throw new UpdateAutoException("Unable to replace");
+            }
 
+            Vehicles[id] = vehicle;
+        }
+
+        /// <summary>
+        /// Method which remove auto by id
+        /// </summary>
+        /// <param name="id"></param>
+        public void RemoveAuto(int id)
+        {
+            if (id < 0 || id >= Vehicles.Count)
+            {
+                throw new RemoveAutoException("Unable to delete auto whith non-existent id");
+            }
+            Vehicles.RemoveAt(id);
+        }
     }
 }
