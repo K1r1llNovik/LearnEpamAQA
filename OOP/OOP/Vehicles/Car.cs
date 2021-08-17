@@ -43,6 +43,11 @@ namespace OOP
                : base(chassis, engine, transmission)
         {
             NumberOfDoors = numberOfDoors;
+
+            if (!IsValidCar())
+            {
+                throw new InitializationException("Unable to initialize the car");
+            }
         }
 
         /// <summary>
@@ -52,6 +57,15 @@ namespace OOP
         public override string GetInfo()
         {
             return base.GetInfo() + $"Number of doors: {NumberOfDoors}";
+        }
+
+        /// <summary>
+        /// Method which check valid values
+        /// </summary>
+        /// <returns>True if the values if valid, otherwise false</returns>
+        private bool IsValidCar()
+        {
+            return IsValidVehicle() && NumberOfDoors >= 2 && NumberOfDoors <= 4;
         }
     }
 }

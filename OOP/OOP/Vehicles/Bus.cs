@@ -31,6 +31,11 @@ namespace OOP
                : base(chassis, engine, transmission)
         {
             MaximumNumberOfPassengers = maximumNumberOfPassengers;
+
+            if (!IsValidBus())
+            {
+                throw new ArgumentException("Unable to initilize the bus");
+            }
         }
 
         /// <summary>
@@ -40,6 +45,15 @@ namespace OOP
         public override string GetInfo()
         {
             return base.GetInfo() + $"Maximum number of passengers: {MaximumNumberOfPassengers}";
+        }
+
+        /// <summary>
+        /// Method which check valid values
+        /// </summary>
+        /// <returns>True if the values if valid, otherwise false</returns>
+        private bool IsValidBus()
+        {
+            return IsValidVehicle() && MaximumNumberOfPassengers <= 50;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OOP.Exceptions
+namespace OOP
 {
     public class InitializationException : Exception
     { 

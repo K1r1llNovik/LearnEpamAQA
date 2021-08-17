@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace OOP.Exceptions
+namespace OOP
 {
     public class AddException : Exception
     {

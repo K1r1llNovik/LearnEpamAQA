@@ -43,6 +43,10 @@ namespace OOP
                : base(chassis, engine, transmission)
         {
             MaximumLiftingCapacity = _maximumLiftingCapacity;
+            if (!IsValidTruck())
+            {
+                throw new InitializationException("Unable to initilize the truck");
+            }
         }
 
         /// <summary>
@@ -52,6 +56,15 @@ namespace OOP
         public override string GetInfo()
         {
             return base.GetInfo() + $"Maximum lifting capacity: {MaximumLiftingCapacity}";
+        }
+
+        /// <summary>
+        /// Method which check valid values
+        /// </summary>
+        /// <returns>True if the values if valid, otherwise false</returns>
+        private bool IsValidTruck()
+        {
+            return IsValidVehicle() && MaximumLiftingCapacity > 0 && MaximumLiftingCapacity <= 15000;
         }
     }
 }

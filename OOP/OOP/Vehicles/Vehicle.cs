@@ -54,5 +54,14 @@ namespace OOP
         {
             return $"{VehicleEngine.GetInfo()}/n" + $"{VehicleChassis.GetInfo()}/n" + $"{ VehicleTransmission.GetInfo()}/n";
         }
+
+        /// <summary>
+        /// Method which check valid values in vehicle
+        /// </summary>
+        /// <returns>Return true if the values are valid, otherwise false</returns>
+        protected bool IsValidVehicle()
+        {
+            return !(VehicleChassis is null || VehicleEngine is null || VehicleTransmission is null);
+        }
     }
 }

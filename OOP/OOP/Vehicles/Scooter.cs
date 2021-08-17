@@ -43,6 +43,10 @@ namespace OOP
                : base(chassis, engine, transmission)
         {
             NumberOfMirrors = numberOfMirrors;
+            if (!IsValidScooter())
+            {
+                throw new InitializationException("Unable to initilize the scooter");
+            }
         }
 
         /// <summary>
@@ -52,6 +56,15 @@ namespace OOP
         public override string GetInfo()
         {
             return base.GetInfo() + $"Number of mirrors: {NumberOfMirrors}";
+        }
+
+        /// <summary>
+        /// Method which check valid values
+        /// </summary>
+        /// <returns>True if the values if valid, otherwise false</returns>
+        private bool IsValidScooter()
+        {
+            return IsValidVehicle() && NumberOfMirrors >= 1 && NumberOfMirrors <= 2;
         }
     }
 }
