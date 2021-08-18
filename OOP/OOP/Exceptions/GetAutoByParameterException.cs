@@ -4,6 +4,6 @@ namespace OOP
 {
     public class GetAutoByParameterException : Exception
     {
-        public GetAutoByParameterException(string message) : base(message = "This parameter does not exist") { }
+        public GetAutoByParameterException(string parameter) : base("This parameter does not exist " + parameter) { }
     }
 }

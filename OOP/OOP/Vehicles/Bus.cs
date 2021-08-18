@@ -34,7 +34,7 @@ namespace OOP
 
             if (!IsValidBus())
             {
-                throw new InitializationException(nameof(Bus));
+                throw new InitializationException();
             }
         }
 

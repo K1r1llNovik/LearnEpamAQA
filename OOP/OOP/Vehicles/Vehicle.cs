@@ -52,7 +52,7 @@ namespace OOP
         /// <returns></returns>
         public virtual string GetInfo()
         {
-            return $"{VehicleEngine.GetInfo()}/n" + $"{VehicleChassis.GetInfo()}/n" + $"{ VehicleTransmission.GetInfo()}/n";
+            return $"\n{VehicleEngine.GetInfo()}\n" + $"{VehicleChassis.GetInfo()}\n" + $"{ VehicleTransmission.GetInfo()}\n";
         }
 
         /// <summary>

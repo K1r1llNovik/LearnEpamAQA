@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace OOP
 {
@@ -28,7 +29,7 @@ namespace OOP
         {
             if (IsContains(vehicle))
             {
-                throw new AddException(nameof(vehicle));
+                throw new AddException(vehicle);
             }
 
             Vehicles.Add(vehicle);
@@ -52,66 +53,50 @@ namespace OOP
         /// <returns>List of selected vehicles</returns>
         public List<Vehicle> GetAutoByParameter(string parameter, string value)
         {
-            List<Vehicle> selectedVehicles = new List<Vehicle>();
-            switch (parameter.ToLower())
+            if (GetNumberOfAutoWithParameter(parameter) == 0)
             {
-                case "enginetype":
-                    selectedVehicles = (from v in Vehicles
-                                        where v.VehicleEngine.Type.ToString().Equals(value)
-                                        select v).ToList();
-                    break;
-
-                case "transmissiontype":
-                    selectedVehicles = (from v in Vehicles
-                                        where v.VehicleTransmission.Type.ToString().Equals(value)
-                                        select v).ToList();
-                    break;
-
-                case "numberofgears":
-                    selectedVehicles = (from v in Vehicles
-                                        where v.VehicleTransmission.NumberOfGears.ToString().Equals(value)
-                                        select v).ToList();
-                    break;
-
-                case "manufacter":
-                    selectedVehicles = (from v in Vehicles
-                                        where v.VehicleTransmission.Manufacturer.ToString().Equals(value)
-                                        select v).ToList();
-                    break;
-
-                case "serialnumber":
-                    selectedVehicles = (from v in Vehicles
-                                        where v.VehicleEngine.SerialNumber.ToString().Equals(value)
-                                        select v).ToList();
-                    break;
-
-                case "volume":
-                    selectedVehicles = (from v in Vehicles
-                                        where v.VehicleEngine.Volume.ToString().Equals(value)
-                                        select v).ToList();
-                    break;
-
-                case "capacity":
-                    selectedVehicles = (from v in Vehicles
-                                        where v.VehicleEngine.Capacity.ToString().Equals(value)
-                                        select v).ToList();
-                    break;
-
-                case "numberofwheels":
-                    selectedVehicles = (from v in Vehicles
-                                        where v.VehicleChassis.NumberOfWheels.ToString().Equals(value)
-                                        select v).ToList();
-                    break;
-
-                case "PermissibleLoad":
-                    selectedVehicles = (from v in Vehicles
-                                        where v.VehicleChassis.PermissibleLoad.ToString().Equals(value)
-                                        select v).ToList();
-                    break;
-                default:
-                    throw new GetAutoByParameterException(nameof(parameter));
+                throw new GetAutoByParameterException(parameter);
             }
-            return selectedVehicles;
+
+            return Vehicles.Where(v => GetPropertyValue(parameter, v).Equals(value)).ToList();
+        }
+
+        /// <summary>
+        /// return property of the class object
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <param name="vehicle"></param>
+        /// <returns></returns>
+        private PropertyInfo GetPropertyByName(string parameter, Vehicle vehicle)
+        {
+            return vehicle.GetType().GetProperty(parameter);
+        }
+
+        /// <summary>
+        /// return property value of the class object
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <param name="vehicle"></param>
+        /// <returns></returns>
+        private string GetPropertyValue(string parameter, Vehicle vehicle)
+        {
+            PropertyInfo property = GetPropertyByName(parameter, vehicle);
+            if(property is null)
+            {
+                return null;
+            }
+
+            return property.GetValue(vehicle).ToString();
+        }
+
+        /// <summary>
+        /// Get number of auto with same parameter
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        private int GetNumberOfAutoWithParameter(string parameter)
+        {
+            return Vehicles.Select(v => GetPropertyByName(parameter, v)).Count(p => !(p is null));
         }
 
         /// <summary>
@@ -123,7 +108,7 @@ namespace OOP
         {
             if (id < 0 || id >= Vehicles.Count)
             {
-                throw new UpdateAutoException(nameof(id));
+                throw new UpdateAutoException(id);
             }
 
             Vehicles[id] = vehicle;
@@ -137,7 +122,7 @@ namespace OOP
         {
             if (id < 0 || id >= Vehicles.Count)
             {
-                throw new RemoveAutoException(nameof(id));
+                throw new RemoveAutoException(id);
             }
             Vehicles.RemoveAt(id);
         }
