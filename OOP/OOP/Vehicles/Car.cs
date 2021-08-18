@@ -46,7 +46,7 @@ namespace OOP
 
             if (!IsValidCar())
             {
-                throw new InitializationException("Unable to initialize the car");
+                throw new InitializationException(nameof(Car));
             }
         }
 

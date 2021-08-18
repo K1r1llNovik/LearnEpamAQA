@@ -45,7 +45,7 @@ namespace OOP
             MaximumLiftingCapacity = _maximumLiftingCapacity;
             if (!IsValidTruck())
             {
-                throw new InitializationException("Unable to initilize the truck");
+                throw new InitializationException(nameof(Truck));
             }
         }
 

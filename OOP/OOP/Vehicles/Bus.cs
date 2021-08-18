@@ -34,7 +34,7 @@ namespace OOP
 
             if (!IsValidBus())
             {
-                throw new ArgumentException("Unable to initilize the bus");
+                throw new InitializationException(nameof(Bus));
             }
         }
 

@@ -4,7 +4,6 @@ namespace OOP
 {
 public class UpdateAutoException : Exception
     {
-        public UpdateAutoException() { }
-        public UpdateAutoException(string message) : base(message) { }
+        public UpdateAutoException(string message) : base(message = "Unable to replace") { }
     }
 }

@@ -28,7 +28,7 @@ namespace OOP
         {
             if (IsContains(vehicle))
             {
-                throw new AddException("Unable to add car model");
+                throw new AddException(nameof(vehicle));
             }
 
             Vehicles.Add(vehicle);
@@ -109,7 +109,7 @@ namespace OOP
                                         select v).ToList();
                     break;
                 default:
-                    throw new GetAutoByParameterException("This parameter does not exist");
+                    throw new GetAutoByParameterException(nameof(parameter));
             }
             return selectedVehicles;
         }
@@ -121,9 +121,9 @@ namespace OOP
         /// <param name="vehicle"></param>
         public void UpdateAuto(int id, Vehicle vehicle)
         {
-            if (id<0 || id >= Vehicles.Count)
+            if (id < 0 || id >= Vehicles.Count)
             {
-                throw new UpdateAutoException("Unable to replace");
+                throw new UpdateAutoException(nameof(id));
             }
 
             Vehicles[id] = vehicle;
@@ -137,7 +137,7 @@ namespace OOP
         {
             if (id < 0 || id >= Vehicles.Count)
             {
-                throw new RemoveAutoException("Unable to delete auto whith non-existent id");
+                throw new RemoveAutoException(nameof(id));
             }
             Vehicles.RemoveAt(id);
         }

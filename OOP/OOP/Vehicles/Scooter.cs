@@ -45,7 +45,7 @@ namespace OOP
             NumberOfMirrors = numberOfMirrors;
             if (!IsValidScooter())
             {
-                throw new InitializationException("Unable to initilize the scooter");
+                throw new InitializationException(nameof(Scooter));
             }
         }
 
