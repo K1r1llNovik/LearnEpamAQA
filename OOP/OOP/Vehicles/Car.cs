@@ -46,7 +46,7 @@ namespace OOP
 
             if (!IsValidCar())
             {
-                throw new InitializationException(nameof(Car));
+                throw new InitializationException();
             }
         }
 
