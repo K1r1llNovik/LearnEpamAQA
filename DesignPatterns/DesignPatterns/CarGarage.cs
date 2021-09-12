@@ -15,7 +15,7 @@ namespace DesignPatterns
             _carGarage = new List<Car>();
         }
 
-        private static CarGarage GetCarGarage()
+        public static CarGarage GetCarGarage()
         {
             if (_garage == null)
             {
@@ -37,7 +37,7 @@ namespace DesignPatterns
 
         public int GetCountAll()
         {
-            return _carGarage.Sum(c => c.Count);
+            return _carGarage.Sum(c => c.CountOfCar);
         }
 
         public double GetAveragePrice()
