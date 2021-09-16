@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace DevelopmentAndBuildTools
 {
@@ -11,7 +12,12 @@ namespace DevelopmentAndBuildTools
         /// <returns>Max count of unique symbols</returns>
         public int GetMaxCountOfUniqueSequenceOfLetters(string sequenceOfCounting)
         {
-            if (string.IsNullOrEmpty(sequenceOfCounting))
+            if (sequenceOfCounting is null)
+            {
+                throw new ArgumentNullException("String for counting cannot be equal null");
+            }
+
+            if (sequenceOfCounting.IsEmptyOrWhiteSpace())
             {
                 return 0;
             }
@@ -46,7 +52,12 @@ namespace DevelopmentAndBuildTools
         /// <returns>Max amount of the same latin letters in string</returns>
         public int GetMaxOfTheSameLatinLetters(string sequenceOfCounting)
         {
-            if (string.IsNullOrEmpty(sequenceOfCounting))
+            if (sequenceOfCounting == null)
+            {
+                throw new ArgumentNullException("String for counting cannot be equal null");
+            }
+
+            if (sequenceOfCounting.IsEmptyOrWhiteSpace())
             {
                 return 0;
             }
@@ -54,14 +65,14 @@ namespace DevelopmentAndBuildTools
             int count = 0;
             int maxCount = 0;
 
-            for (int i = 0; i < sequenceOfCounting.Length - 1; i++)
+            for (int i = 0; i < sequenceOfCounting.Length; i++)
             {
                 if (IsLatinSymbol(sequenceOfCounting[i]) && count == 0)
                 {
                     count = 1;
                 }
 
-                if (IsLatinSymbol(sequenceOfCounting[i]) && sequenceOfCounting[i] == sequenceOfCounting[i + 1])
+                if (IsLatinSymbol(sequenceOfCounting[i]) && i < sequenceOfCounting.Length - 1 && sequenceOfCounting[i] == sequenceOfCounting[i + 1])
                 {
                     count++;
                 }
@@ -75,11 +86,7 @@ namespace DevelopmentAndBuildTools
                 }
             }
 
-            if (count > maxCount)
-            {
-                maxCount = count;
-            }
-            return maxCount;
+            return count > maxCount ? count : maxCount;
         }
 
         /// <summary>
@@ -89,7 +96,12 @@ namespace DevelopmentAndBuildTools
         /// <returns>Max amount of the same digits in string</returns>
         public int GetMaxOfTheSameDigit(string sequenceOfCounting)
         {
-            if (string.IsNullOrEmpty(sequenceOfCounting))
+            if (sequenceOfCounting == null)
+            {
+                throw new ArgumentNullException("String for counting cannot be equal null");
+            }
+
+            if (sequenceOfCounting.IsEmptyOrWhiteSpace())
             {
                 return 0;
             }
@@ -97,14 +109,14 @@ namespace DevelopmentAndBuildTools
             int count = 0;
             int maxCount = 0;
 
-            for (int i = 0; i < sequenceOfCounting.Length - 1; i++)
+            for (int i = 0; i < sequenceOfCounting.Length; i++)
             {
                 if (Char.IsDigit(sequenceOfCounting[i]) && count == 0)
                 {
                     count = 1;
                 }
 
-                if (Char.IsDigit(sequenceOfCounting[i]) && sequenceOfCounting[i] == sequenceOfCounting[i + 1])
+                if (Char.IsDigit(sequenceOfCounting[i]) && i < sequenceOfCounting.Length - 1 && sequenceOfCounting[i] == sequenceOfCounting[i + 1])
                 {
                     count++;
                 }
@@ -120,7 +132,12 @@ namespace DevelopmentAndBuildTools
             return count > maxCount ? count : maxCount;
         }
 
-        private bool IsLatinSymbol(char symbol)
+        /// <summary>
+        /// Method which checked symbols in a string for latin
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <returns>True if symbol is latin, else false</returns>
+        private static bool IsLatinSymbol(char symbol)
         {
             return (symbol >= 'A' && symbol <= 'Z') ||
                 (symbol >= 'a' && symbol <= 'z');

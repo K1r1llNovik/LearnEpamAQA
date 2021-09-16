@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopmentAndBuildTools", "DevelopmentAndBuildTools\DevelopmentAndBuildTools.csproj", "{8A74AD8D-88BE-452C-AC05-E737B178681B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevelopmentAndBuildTools", "DevelopmentAndBuildTools\DevelopmentAndBuildTools.csproj", "{8A74AD8D-88BE-452C-AC05-E737B178681B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountingCharacterTests", "CountingCharacterTests\CountingCharacterTests.csproj", "{0ED81583-C598-4258-8CA0-F6B05624181C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{8A74AD8D-88BE-452C-AC05-E737B178681B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A74AD8D-88BE-452C-AC05-E737B178681B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A74AD8D-88BE-452C-AC05-E737B178681B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ED81583-C598-4258-8CA0-F6B05624181C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ED81583-C598-4258-8CA0-F6B05624181C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ED81583-C598-4258-8CA0-F6B05624181C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ED81583-C598-4258-8CA0-F6B05624181C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
