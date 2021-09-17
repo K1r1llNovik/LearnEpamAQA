@@ -14,7 +14,7 @@ namespace DevelopmentAndBuildTools
         {
             if (sequenceOfCounting is null)
             {
-                throw new ArgumentNullException("String for counting cannot be equal null");
+                throw new ArgumentNullException(nameof(sequenceOfCounting));
             }
 
             if (sequenceOfCounting.IsEmptyOrWhiteSpace())
@@ -54,7 +54,7 @@ namespace DevelopmentAndBuildTools
         {
             if (sequenceOfCounting == null)
             {
-                throw new ArgumentNullException("String for counting cannot be equal null");
+                throw new ArgumentNullException(nameof(sequenceOfCounting));
             }
 
             if (sequenceOfCounting.IsEmptyOrWhiteSpace())
@@ -98,7 +98,7 @@ namespace DevelopmentAndBuildTools
         {
             if (sequenceOfCounting == null)
             {
-                throw new ArgumentNullException("String for counting cannot be equal null");
+                throw new ArgumentNullException(nameof(sequenceOfCounting));
             }
 
             if (sequenceOfCounting.IsEmptyOrWhiteSpace())
