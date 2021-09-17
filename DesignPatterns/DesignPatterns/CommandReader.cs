@@ -49,7 +49,7 @@ namespace DesignPatterns
         {
             if (args.Length != 5)
             {
-                return null;
+                throw new ArgumentException("This command does not exist, enter commands for a list of commands");
             }
 
             Car car = new Car(args[1], args[2], Convert.ToInt32(args[3]), Convert.ToDouble(args[4]));
@@ -60,7 +60,7 @@ namespace DesignPatterns
         {
             if (args.Length != 2)
             {
-                return null;
+                throw new ArgumentException("This command does not exist, enter commands for a list of commands");
             }
 
             switch (args[1])
@@ -78,7 +78,7 @@ namespace DesignPatterns
         {
             if (args.Length > 3 && args.Length < 2)
             {
-                return null;
+                throw new ArgumentException("This command does not exist, enter commands for a list of commands");
             }
 
             switch (args[1])

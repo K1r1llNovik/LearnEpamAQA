@@ -15,15 +15,23 @@ namespace DesignPatterns
             _carGarage = new List<Car>();
         }
 
+        private static readonly object _lock = new object();
+
         public static CarGarage GetCarGarage()
         {
             if (_garage == null)
             {
-                _garage = new CarGarage();
+                lock (_lock)
+                {
+                    if (_garage == null)
+                    {
+                        _garage = new CarGarage();
+                    }
+                }
             }
-
             return _garage;
         }
+
 
         public void Add(Car car)
         {
