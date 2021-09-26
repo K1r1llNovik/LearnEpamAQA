@@ -29,9 +29,11 @@ namespace WebDriver.MailRuModel
         public AutorizationPageObject Login(User user)
         {
             _webDriver.FindElement(_accountNameInput).SendKeys(user.Login);
+            Thread.Sleep(1000);
             _webDriver.FindElement(_furtherButton).Click();
             Thread.Sleep(10000);
             _webDriver.FindElement(_passwordInput).SendKeys(user.Password);
+            Thread.Sleep(1000);
             _webDriver.FindElement(_signInButton).Click();
 
             return this;
@@ -39,7 +41,7 @@ namespace WebDriver.MailRuModel
 
         public bool IsErrorDisplayd()
         {
-            Thread.Sleep(10000);
+            Thread.Sleep(1000);
             return _webDriver.FindElement(_errorMessage).Displayed;
         }
     }
