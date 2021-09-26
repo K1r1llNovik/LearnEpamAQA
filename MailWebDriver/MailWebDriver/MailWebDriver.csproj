@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="MailRuModel\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="94.0.4606.4101" />
   </ItemGroup>
