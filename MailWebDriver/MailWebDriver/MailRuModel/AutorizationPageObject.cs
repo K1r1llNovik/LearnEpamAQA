@@ -1,11 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿using MailWebDriver.Base;
+using MailWebDriver.MailRuModel;
+using OpenQA.Selenium;
 using System;
 using System.Text;
 using System.Threading;
 
 namespace WebDriver.MailRuModel
 {
-    public class AutorizationPageObject
+    public class AutorizationPageObject : BasePage
     {
         private IWebDriver _webDriver;
 
@@ -17,19 +19,19 @@ namespace WebDriver.MailRuModel
 
         private const string _path = "https://mail.ru/";
 
-        public AutorizationPageObject(IWebDriver webDriver)
+        public AutorizationPageObject(IWebDriver webDriver) : base(webDriver)
         {
             _webDriver = webDriver;
             _webDriver.Manage().Window.Maximize();
             _webDriver.Navigate().GoToUrl(_path);
         }
 
-        public AutorizationPageObject Login(string login, string password)
+        public AutorizationPageObject Login(User user)
         {
-            _webDriver.FindElement(_accountNameInput).SendKeys(login);
+            _webDriver.FindElement(_accountNameInput).SendKeys(user.Login);
             _webDriver.FindElement(_furtherButton).Click();
             Thread.Sleep(10000);
-            _webDriver.FindElement(_passwordInput).SendKeys(password);
+            _webDriver.FindElement(_passwordInput).SendKeys(user.Password);
             _webDriver.FindElement(_signInButton).Click();
 
             return this;

@@ -1,3 +1,4 @@
+using MailWebDriver.Base;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -19,11 +20,17 @@ namespace MailWebDriverTests
         public void Test1()
         {
             var mainPage = new AutorizationPageObject(_webDriver);
-            mainPage.Login("alisap_etrova1992", "bgtvfrcdexswzaq1");
+            mainPage.Login(new User("alisap_etrova1992@mail.ru", "bgtvfrcdexswzaq15"));
 
             bool check = mainPage.IsErrorDisplayd();
 
             Assert.IsTrue(check);
+        }
+
+        [TearDown]
+        public void Quit()
+        {
+            _webDriver.Quit();
         }
     }
 }
