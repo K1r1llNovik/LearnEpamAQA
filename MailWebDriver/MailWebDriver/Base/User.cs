@@ -15,6 +15,5 @@ namespace MailWebDriver.Base
             Login = login;
             Password = password;
         }
-
     }
 }

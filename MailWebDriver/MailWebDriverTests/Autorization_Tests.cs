@@ -19,49 +19,38 @@ namespace MailWebDriverTests
         [Test]
         public void CorrectLoginAndPassword_Test()
         {
+            var user = new User("alisap_etrova1992@mail.ru", "bgtvfrcdexswzaq15");
             var autorizationPage = new AutorizationPageObject(_webDriver);
-            autorizationPage.Login(new User("alisap_etrova1992@mail.ru", "bgtvfrcdexswzaq15"));
+            autorizationPage.InputLogin(user.Login);
 
             Assert.AreEqual(1, 1);
         }
 
         [Test]
-        public void InCorrectLogin_ReturnTrue_Test()
+        [TestCase("qwsfiuahroisdfsdfscvferlwer12344","]'/mnbvcxsertyjklp987t--")]
+        [TestCase("","")]
+        public void IncorrectLogin_ReturnTrue_Tests(string login, string password)
         {
+            var user = new User(login, password);
             var autorizationPage = new AutorizationPageObject(_webDriver);
-            autorizationPage.Login(new User("sawddvcx@mail.ru", "bgtvfrcdexswzaq15"));
+            autorizationPage.InputLogin(user.Login);
 
             bool condition = autorizationPage.IsErrorDisplayd();
+
             Assert.IsTrue(condition);
         }
 
         [Test]
-        public void EmptyLogin_ReturnTrue_Test()
+        [TestCase("alisap_etrova1992@mail.ru", "qweqwesfsvtrterwwef")]
+        [TestCase("alisap_etrova1992@mail.ru", "")]
+        public void IncorrectLogin_ReturnTrues_Tests(string login, string password)
         {
+            var user = new User(login, password);
             var autorizationPage = new AutorizationPageObject(_webDriver);
-            autorizationPage.Login(new User(string.Empty, "aasdasdasd"));
+            autorizationPage.InputLogin(user.Password);
 
             bool condition = autorizationPage.IsErrorDisplayd();
-            Assert.IsTrue(condition);
-        }
 
-        [Test]
-        public void InCorrectPassword_ReturnTrue_Test()
-        {
-            var autorizationPage = new AutorizationPageObject(_webDriver);
-            autorizationPage.Login(new User("alisap_etrova1992@mail.ru", "bgtvfrcdexsw"));
-
-            bool condition = autorizationPage.IsErrorDisplayd();
-            Assert.IsTrue(condition);
-        }
-
-        [Test]
-        public void EmptyPassword_ReturnTrue_Test()
-        {
-            var autorizationPage = new AutorizationPageObject(_webDriver);
-            autorizationPage.Login(new User("alisap_etrova1992@mail.ru", string.Empty));
-
-            bool condition = autorizationPage.IsErrorDisplayd();
             Assert.IsTrue(condition);
         }
 

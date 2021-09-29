@@ -1,5 +1,6 @@
 ﻿using MailWebDriver.Base;
 using MailWebDriver.MailRuModel;
+using MailWebDriver.Waiters;
 using OpenQA.Selenium;
 using System;
 using System.Text;
@@ -26,14 +27,21 @@ namespace WebDriver.MailRuModel
             _webDriver.Navigate().GoToUrl(_path);
         }
 
-        public AutorizationPageObject Login(User user)
+        public AutorizationPageObject InputLogin(string login)
         {
-            _webDriver.FindElement(_accountNameInput).SendKeys(user.Login);
-            Thread.Sleep(1000);
+            Waiter.WaitElementIsVisible(_accountNameInput);
+            _webDriver.FindElement(_accountNameInput).SendKeys(login);
+            Waiter.WaitElementToBeClickable(_furtherButton);
             _webDriver.FindElement(_furtherButton).Click();
-            Thread.Sleep(10000);
-            _webDriver.FindElement(_passwordInput).SendKeys(user.Password);
-            Thread.Sleep(1000);
+
+            return this;
+        }
+
+        public AutorizationPageObject InputPassword(string password)
+        {
+            Waiter.WaitElementIsVisible(_passwordInput);
+            _webDriver.FindElement(_passwordInput).SendKeys(password);
+            Waiter.WaitElementToBeClickable(_signInButton);
             _webDriver.FindElement(_signInButton).Click();
 
             return this;
@@ -41,7 +49,7 @@ namespace WebDriver.MailRuModel
 
         public bool IsErrorDisplayd()
         {
-            Thread.Sleep(1000);
+            Waiter.WaitElementIsVisible(_errorMessage);
             return _webDriver.FindElement(_errorMessage).Displayed;
         }
     }
