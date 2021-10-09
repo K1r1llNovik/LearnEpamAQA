@@ -6,7 +6,7 @@ using WebDriver.MailRuModel;
 
 namespace MailWebDriverTests
 {
-    public class Tests
+    public class AutorizationTests
     {
         private IWebDriver _webDriver;
 

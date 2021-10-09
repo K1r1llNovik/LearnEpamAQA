@@ -1,16 +1,14 @@
-﻿using System;
-using MailWebDriver.Base;
+﻿using MailWebDriver.Base;
 using MailWebDriver.MailRuModel;
 using MailWebDriver.Waiters;
 using OpenQA.Selenium;
+using System;
 
 
 namespace MailWebDriver.MailRuModel
 {
     public class InboxPage : BasePage
     {
-        private IWebDriver _webDriver;
-
         private readonly By _writeAMessageButton = By.XPath("//span[@class='compose-button__txt']");
         private readonly By _sideBarWithPersonalDataButton = By.XPath("//div[@data-testid='whiteline-account']");
         private readonly By _personalDataButton = By.XPath("//div[text()='Личные данные']");
@@ -30,19 +28,19 @@ namespace MailWebDriver.MailRuModel
         public InboxPage OpenPersonalData()
         {
             Waiter.WaitElementToBeClickable(_sideBarWithPersonalDataButton);
-            _webDriver.FindElement(_sideBarWithPersonalDataButton).Click();
+            Driver.FindElement(_sideBarWithPersonalDataButton).Click();
             Waiter.WaitElementToBeClickable(_personalDataButton);
-            _webDriver.FindElement(_personalDataButton).Click();
+            Driver.FindElement(_personalDataButton).Click();
 
             return this;
         }
 
-        public InboxPage OpenWriteALetterPage()
+        public WriteLetterPage OpenWriteALetterPage()
         {
             Waiter.WaitElementToBeClickable(_writeAMessageButton);
-            _webDriver.FindElement(_writeAMessageButton).Click();
+            Driver.FindElement(_writeAMessageButton).Click();
 
-            return this;
+            return new WriteLetterPage(Driver);
         }
 
     }

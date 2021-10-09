@@ -2,9 +2,9 @@
 using MailWebDriver.Waiters;
 using OpenQA.Selenium;
 
-namespace MailWebDriver.MailRuModel
+namespace MailWebDriver.GoogleMailModel
 {
-   public abstract class BasePage
+    public abstract class BasePage
     {
         /// <summary>
         /// Wait time, measured in milliseconds.

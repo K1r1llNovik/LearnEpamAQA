@@ -1,14 +1,13 @@
-﻿using System;
-using MailWebDriver.Base;
+﻿using MailWebDriver.Base;
 using MailWebDriver.MailRuModel;
 using MailWebDriver.Waiters;
 using OpenQA.Selenium;
+using System;
 
 namespace MailWebDriver.MailRuModel
 {
     public class WriteLetterPage : BasePage
     {
-        private IWebDriver _webDriver;
         private readonly By _recieverInput = By.XPath("//label[@class='container--zU301']");
         private readonly By _letterInput = By.XPath("//br/parent::div");
         private readonly By _sendButton = By.XPath("//span[text()='Отправить']");
@@ -28,14 +27,14 @@ namespace MailWebDriver.MailRuModel
 
         public WriteLetterPage TypeRecieverName(string recieverName)
         {
-            _webDriver.FindElement(_recieverInput).SendKeys(recieverName);
+            Driver.FindElement(_recieverInput).SendKeys(recieverName);
             return this;
         }
 
         public WriteLetterPage TypeLetter(string letter)
         {
             Waiter.WaitElementIsVisible(_letterInput);
-            _webDriver.FindElement(_letterInput).SendKeys(letter);
+            Driver.FindElement(_letterInput).SendKeys(letter);
 
             return this;
         }
@@ -43,7 +42,7 @@ namespace MailWebDriver.MailRuModel
         public WriteLetterPage SendMessage()
         {
             Waiter.WaitElementToBeClickable(_sendButton);
-            _webDriver.FindElement(_sendButton).Click();
+            Driver.FindElement(_sendButton).Click();
 
             return this;
         }
@@ -52,9 +51,9 @@ namespace MailWebDriver.MailRuModel
         {
             Waiter.WaitElementToBeClickable(_closeLayerWindowButton);
 
-            _webDriver.FindElement(_closeLayerWindowButton).Click();
+            Driver.FindElement(_closeLayerWindowButton).Click();
 
-            return new InboxPage(_webDriver);
+            return new InboxPage(Driver);
         }
 
         public InboxPage WriteLetter(string recieverName, string letter)
