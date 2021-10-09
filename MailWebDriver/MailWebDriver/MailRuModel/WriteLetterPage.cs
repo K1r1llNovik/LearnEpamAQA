@@ -12,8 +12,6 @@ namespace MailWebDriver.MailRuModel
         private readonly By _letterInput = By.XPath("//br/parent::div");
         private readonly By _sendButton = By.XPath("//span[text()='Отправить']");
         private readonly By _closeLayerWindowButton = By.XPath("//div[@class='layer__controls']/span");
-
-        private const string reciever = "jonhweek2001@gmail.com";
         public WriteLetterPage(IWebDriver webDriver) : base(webDriver)
         {
             WaitPageLoading();
