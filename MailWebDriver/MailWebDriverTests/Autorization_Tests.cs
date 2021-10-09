@@ -35,7 +35,7 @@ namespace MailWebDriverTests
             var autorizationPage = new AutorizationPageObject(_webDriver);
             autorizationPage.InputLogin(user.Login);
 
-            bool condition = autorizationPage.IsErrorDisplayd();
+            bool condition = autorizationPage.IsErrorDisplayed();
 
             Assert.IsTrue(condition);
         }
@@ -49,7 +49,7 @@ namespace MailWebDriverTests
             var autorizationPage = new AutorizationPageObject(_webDriver);
             autorizationPage.InputLogin(user.Password);
 
-            bool condition = autorizationPage.IsErrorDisplayd();
+            bool condition = autorizationPage.IsErrorDisplayed();
 
             Assert.IsTrue(condition);
         }

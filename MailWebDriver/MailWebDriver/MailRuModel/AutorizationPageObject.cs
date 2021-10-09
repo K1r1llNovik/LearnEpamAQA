@@ -47,7 +47,7 @@ namespace WebDriver.MailRuModel
             return this;
         }
 
-        public bool IsErrorDisplayd()
+        public bool IsErrorDisplayed()
         {
             Waiter.WaitElementIsVisible(_errorMessage);
             return _webDriver.FindElement(_errorMessage).Displayed;
