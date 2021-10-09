@@ -18,5 +18,7 @@ namespace MailWebDriver.MailRuModel
             Waiters.Waiter.Driver = _webDriver;
             Waiters.Waiter.WaitTime = _waitTime;
         }
+
+        public abstract void WaitPageLoading();
     }
 }

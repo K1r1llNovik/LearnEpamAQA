@@ -35,6 +35,11 @@ namespace MailWebDriver.Waiters
             new WebDriverWait(Driver, new TimeSpan(0, 0, 0, 0, WaitTime)).Until(ExpectedConditions.ElementToBeClickable(locator));
         }
 
+        public static void WaitTitleContain(string title)
+        {
+            new WebDriverWait(Driver, new TimeSpan(0, 0, 0, 0, WaitTime)).Until(ExpectedConditions.TitleContains(title));
+        }
+
         /// <summary>
         /// Waiting for the specified time
         /// </summary>
