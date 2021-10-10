@@ -51,6 +51,12 @@ namespace WebDriver.MailRuModel
             return new InboxPage(Driver);
         }
 
+        public InboxPage LoginAs(User user)
+        {
+            InputLogin(user.Login);
+            return InputPassword(user.Password);
+        }
+
         public bool IsErrorDisplayed()
         {
             Waiter.WaitElementIsVisible(_errorMessage);
