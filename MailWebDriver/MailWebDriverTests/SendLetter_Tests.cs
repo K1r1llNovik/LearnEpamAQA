@@ -22,30 +22,40 @@ namespace MailWebDriverTests
             _webDriver = new ChromeDriver();
             validMailRuUser = new User("alisap_etrova1992@mail.ru", "bgtvfrcdexswzaq15");
             validYandexUser = new User("johnwheeck2001@yandex.by", "qazwsxedcrfvtgb15");
-            sendLetter = new Letter("johnwheeck2001@yandex.by", "Привет");
+            sendLetter = new Letter("johnwheeck2001@yandex.by", "Hello My Friend");
+            replyLetter = new Letter("alisap_etrova1992@mail.ru", "AlenaErmak");
         }
 
         [Test]
-        public void SendLetterTest_IsNotReadAndCorrectEmailSender()
+        public void SendLetterTest_IsNotReadAndCorrectEmailText()
         {
-            var defaultYandexMail = new HomePage(_webDriver).OpenAutorizatioPage().LoginAs(validYandexUser);
+            var defaultMailRu = new AutorizationPageObject(_webDriver).LoginAs(validMailRuUser)
+                .OpenWriteALetterPage()
+                .WriteLetter(sendLetter.EmailReciever, sendLetter.LettersText);
+
+            var defaultYandexMail = new HomePage(_webDriver).OpenAutorizatioPage().LoginAs(validYandexUser).UpdateLetters();
 
             bool isNotRead = defaultYandexMail
                 .UpdateLetters()
                 .IsNotReadedLastIncomingLetter();
 
-            Assert.IsTrue(isNotRead,"The letter is read");
+            Assert.IsTrue(isNotRead, "The letter is read");
 
-            string text = defaultYandexMail.OpenLastIncomingLetter().GetLetterText();
+            var openInbox = defaultYandexMail.OpenLastIncomingLetter();
 
+            string text = openInbox.GetLetterText();
             Assert.AreEqual(sendLetter.LettersText, text);
-            Thread.Sleep(3000);
+
+            string email = openInbox.GetSenderEmail();
+            Assert.AreEqual(validMailRuUser.Login, email);
+
+            openInbox.ReplyLetter(replyLetter.LettersText);
         }
 
         [TearDown]
         public void Quit()
         {
-            _webDriver.Quit();
+           // _webDriver.Quit();
         }
     }
 }

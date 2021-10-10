@@ -7,10 +7,10 @@ namespace MailWebDriver.YandexMailModel
     public class LetterPage : BasePage
     {
         private readonly By _senderEmail = By.XPath("//span[contains(@class, 'SenderEmail')]");
-        private readonly By _letterText = By.XPath("//div[contains(@class,'MessageBody')]//div[contains(@class,'MessageViewer')]//div[2]");
+        private readonly By _letterText = By.XPath("//div[contains(@class,'MessageBody')]//div[contains(@class,'MessageViewer')]//div[contains(@class,'MessageBody')]//div[1]");
         private readonly By _answerButton = By.XPath("//div[@data-params='source=toolbar']//span[text()='Ответить']");
         private readonly By _ansewInput = By.XPath("//div[contains(@class,'context_menu')]//div[1]");
-        private readonly By _sendButton = By.XPath("//button[@type='button']//span[text()='Отправить']");
+        private readonly By _sendButton = By.XPath("//button[@type='button']//div[@class='ComposeSendButton-Text']//span");
         public LetterPage(IWebDriver webDriver) : base(webDriver)
         {
             WaitPageLoading();
