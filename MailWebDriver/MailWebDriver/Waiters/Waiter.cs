@@ -40,10 +40,14 @@ namespace MailWebDriver.Waiters
             new WebDriverWait(Driver, new TimeSpan(0, 0, 0, 0, WaitTime)).Until(ExpectedConditions.TitleContains(title));
         }
 
+        public static void WaitVisabilityOfAllElementLocatedBy(By locator)
+        {
+            new WebDriverWait(Driver, new TimeSpan(0, 0, 0, 0, WaitTime)).Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(locator));
+        }
         /// <summary>
         /// Waiting for the specified time
         /// </summary>
-        public static void WaitPageLoading()
+            public static void WaitPageLoading()
         {
             new WebDriverWait(Driver, new TimeSpan(0, 0, 0, 0, WaitTime));
         }

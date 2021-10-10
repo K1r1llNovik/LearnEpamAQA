@@ -3,7 +3,8 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using WebDriver.MailRuModel;
-using MailWebDriver.GoogleMailModel;
+using MailWebDriver.YandexMailModel;
+using System.Threading;
 
 namespace MailWebDriverTests
 {
@@ -11,25 +12,34 @@ namespace MailWebDriverTests
     {
         private IWebDriver _webDriver;
         public User validMailRuUser;
-        public User validGMailUser;
-        public Letter letter;
+        public User validYandexUser;
+        public Letter sendLetter;
+        public Letter replyLetter;
 
         [SetUp]
         public void Setup()
         {
             _webDriver = new ChromeDriver();
             validMailRuUser = new User("alisap_etrova1992@mail.ru", "bgtvfrcdexswzaq15");
-            letter = new Letter("jonhweek2001@gmail.com", "Привет");
+            validYandexUser = new User("johnwheeck2001@yandex.by", "qazwsxedcrfvtgb15");
+            sendLetter = new Letter("johnwheeck2001@yandex.by", "Привет");
         }
 
         [Test]
-        public void SendLetterTest()
+        public void SendLetterTest_IsNotReadAndCorrectEmailSender()
         {
-            //LoginAs
-            var mailRuAutorization = new AutorizationPageObject(_webDriver)
-                 .InputLogin(validMailRuUser.Login)
-                 .InputPassword(validMailRuUser.Password)
-                 .OpenWriteALetterPage().WriteLetter(letter.EmailReciever, letter.LettersText);
+            var defaultYandexMail = new HomePage(_webDriver).OpenAutorizatioPage().LoginAs(validYandexUser);
+
+            bool isNotRead = defaultYandexMail
+                .UpdateLetters()
+                .IsNotReadedLastIncomingLetter();
+
+            Assert.IsTrue(isNotRead,"The letter is read");
+
+            string text = defaultYandexMail.OpenLastIncomingLetter().GetLetterText();
+
+            Assert.AreEqual(sendLetter.LettersText, text);
+            Thread.Sleep(3000);
         }
 
         [TearDown]
