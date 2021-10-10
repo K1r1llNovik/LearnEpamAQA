@@ -53,9 +53,9 @@ namespace MailWebDriverTests
         }
 
         [TearDown]
-        public void Quit()
+        public void Tests_TearDown()
         {
-            //_webDriver.Quit();
+            _webDriver.Quit();
         }
     }
 }
