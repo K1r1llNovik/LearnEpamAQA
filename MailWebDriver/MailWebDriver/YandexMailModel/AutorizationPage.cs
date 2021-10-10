@@ -7,6 +7,7 @@ namespace MailWebDriver.YandexMailModel
 {
     public class AutorizationPage : BasePage
     {
+        private readonly string _path = "https://passport.yandex.ru/";
         private readonly By _loginInput = By.XPath("//input[@data-t='field:input-login']");
         private readonly By _passwordInput = By.XPath("//input[@data-t='field:input-passwd']");
         private readonly By _furtherButton = By.XPath("//button[@id='passp:sign-in']");
