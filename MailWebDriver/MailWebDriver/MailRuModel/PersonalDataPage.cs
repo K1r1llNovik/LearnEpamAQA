@@ -24,10 +24,19 @@ namespace MailWebDriver.MailRuModel
         public PersonalDataPage ChangeNickName(string nickName)
         {
             Waiter.WaitElementIsVisible(_nickNameInput);
+            Driver.FindElement(_nickNameInput).Clear();
             Driver.FindElement(_nickNameInput).SendKeys(nickName);
             Waiter.WaitElementToBeClickable(_saveButton);
             Driver.FindElement(_saveButton).Click();
             return this;
+        }
+
+        public string GetNickName()
+        {
+            Driver.Navigate().Refresh();
+            Waiter.WaitElementIsVisible(_nickNameInput);
+            var element = Driver.FindElement(_nickNameInput);
+            return element.GetAttribute("value");
         }
     }
 }

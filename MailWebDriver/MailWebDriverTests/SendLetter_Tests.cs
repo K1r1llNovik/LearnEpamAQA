@@ -4,7 +4,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using WebDriver.MailRuModel;
 using MailWebDriver.YandexMailModel;
-using System.Threading;
 
 namespace MailWebDriverTests
 {
@@ -23,10 +22,11 @@ namespace MailWebDriverTests
             validMailRuUser = new User("alisap_etrova1992@mail.ru", "bgtvfrcdexswzaq15");
             validYandexUser = new User("johnwheeck2001@yandex.by", "qazwsxedcrfvtgb15");
             sendLetter = new Letter("johnwheeck2001@yandex.by", "Hello My Friend");
-            replyLetter = new Letter("alisap_etrova1992@mail.ru", "HovaDance");
+            replyLetter = new Letter("alisap_etrova1992@mail.ru", "NewNickName");
         }
 
         [Test]
+        [Order(1)]
         public void SendLetterTest_IsNotReadAndCorrectEmailText()
         {
             var defaultMailRu = new AutorizationPageObject(_webDriver).LoginAs(validMailRuUser)
@@ -50,6 +50,16 @@ namespace MailWebDriverTests
             Assert.AreEqual(validMailRuUser.Login, email);
 
             openInbox.ReplyLetter(replyLetter.LettersText);
+        }
+        [Test]
+        [Order(2)]
+        public void ChangeNickName_Test()
+        {
+            var mailRuDriver = new AutorizationPageObject(_webDriver).LoginAs(validMailRuUser);
+
+            string nickName = mailRuDriver.OpenLastIncomingLetter().GetTextInLetter();
+
+            Assert.AreEqual(nickName, mailRuDriver.OpenPersonalData().ChangeNickName(nickName).GetNickName());
         }
 
         [TearDown]

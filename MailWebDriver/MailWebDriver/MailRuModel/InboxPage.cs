@@ -47,7 +47,7 @@ namespace MailWebDriver.MailRuModel
         public string GetTextInLetter()
         {
             Waiter.WaitElementIsVisible(_recivedLetterText);
-            return Driver.FindElement(_recivedLetterText).Text;
+            return Driver.FindElement(_recivedLetterText).Text.Trim();
         }
 
         public WriteLetterPage OpenWriteALetterPage()
