@@ -15,6 +15,6 @@ namespace MailWebDriver.YandexMailModel
             Waiter.Driver = Driver;
             Waiter.WaitTime = _waitTime;
         }
-        public abstract void WaitPageLoading();
+        protected abstract void WaitPageLoading();
     }
 }

@@ -20,6 +20,6 @@ namespace MailWebDriver.MailRuModel
             Waiter.WaitTime = _waitTime;
         }
 
-        public abstract void WaitPageLoading();
+        protected abstract void WaitPageLoading();
     }
 }

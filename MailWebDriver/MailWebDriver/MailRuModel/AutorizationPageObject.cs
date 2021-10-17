@@ -25,7 +25,7 @@ namespace WebDriver.MailRuModel
             WaitPageLoading();
         }
 
-        public override void WaitPageLoading()
+        protected override void WaitPageLoading()
         {
             Waiter.WaitPageLoading();
             Waiter.WaitTitleContain(_title);

@@ -17,7 +17,7 @@ namespace MailWebDriver.MailRuModel
             WaitPageLoading();
         }
 
-        public override void WaitPageLoading()
+        protected override void WaitPageLoading()
         {
             Waiter.WaitPageLoading();
             Waiter.WaitElementIsVisible(_recieverInput);

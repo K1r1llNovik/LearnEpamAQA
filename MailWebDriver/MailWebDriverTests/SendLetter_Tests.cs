@@ -22,7 +22,7 @@ namespace MailWebDriverTests
             validMailRuUser = new User("alisap_etrova1992@mail.ru", "bgtvfrcdexswzaq15");
             validYandexUser = new User("johnwheeck2001@yandex.by", "qazwsxedcrfvtgb15");
             sendLetter = new Letter("johnwheeck2001@yandex.by", "Hello My Friend");
-            replyLetter = new Letter("alisap_etrova1992@mail.ru", "NewNickName");
+            replyLetter = new Letter("alisap_etrova1992@mail.ru", "NewNickName123");
         }
 
         [Test]

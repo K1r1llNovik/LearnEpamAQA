@@ -16,7 +16,7 @@ namespace MailWebDriver.YandexMailModel
             WaitPageLoading();
         }
 
-        public override void WaitPageLoading()
+        protected override void WaitPageLoading()
         {
             Waiter.WaitPageLoading();
             Waiter.WaitTitleContain(_title);
