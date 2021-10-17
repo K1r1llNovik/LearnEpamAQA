@@ -1,23 +1,29 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using MailAutomationFrameWork.Driver;
+using MailAutomationFrameWork.Utils;
 
 namespace MailWebDriverTests
 {
     public class CommonCondition
     {
-        protected IWebDriver _wevDriver;
+        protected IWebDriver _webDriver;
 
         [SetUp]
         public void SetUp()
         {
-            _wevDriver = DriverSingleton.GetDriver();
+            _webDriver = DriverSingleton.GetDriver();
         }
         [TearDown]
         public void TearDrown()
         {
-            
+            if(TestContext.CurrentContext.Result.Outcome == ResultState.Failure)
+            {
+                new ScreenShoter().TakeScreenshot(_webDriver);
+            }
+
+            DriverSingleton.CloseDriver();
         }
     }
 }

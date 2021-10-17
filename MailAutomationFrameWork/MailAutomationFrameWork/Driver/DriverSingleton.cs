@@ -34,7 +34,7 @@ namespace MailAutomationFrameWork.Driver
             return _webDriver;
         }
 
-        public void CloseDriver()
+        public static void CloseDriver()
         {
             _webDriver.Quit();
             _webDriver = null;
