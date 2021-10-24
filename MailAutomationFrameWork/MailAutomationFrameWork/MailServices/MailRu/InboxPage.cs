@@ -22,7 +22,6 @@ namespace MailAutomationFrameWork.MailServices.MailRu
         protected override void WaitPageLoading()
         {
             Waiter.WaitPageLoading();
-            Waiter.WaitTitleContain(_title);
         }
 
         public PersonalDataPage OpenPersonalData()

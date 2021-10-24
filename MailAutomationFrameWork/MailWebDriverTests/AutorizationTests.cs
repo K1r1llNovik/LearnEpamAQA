@@ -3,35 +3,27 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using MailAutomationFrameWork.Base;
 using MailAutomationFrameWork.MailServices.MailRu;
+using MailAutomationFrameWork.Service;
 
 namespace MailWebDriverTests
 {
-    public class AutorizationTests
+    public class AutorizationTests : CommonCondition
     {
-        private IWebDriver _webDriver;
-
-        [SetUp]
-        public void Setup()
-        {
-            _webDriver = new ChromeDriver();
-        }
-
         [Test]
         public void CorrectLoginAndPassword_Test()
         {
-            var user = new User("alisap_etrova1992@mail.ru", "bgtvfrcdexswzaq15");
             var autorizationPage = new AutorizationPage(_webDriver);
-            autorizationPage.InputLogin(user.Login);
+            var IsHomePage = autorizationPage.LoginAs(UserCreator.UserMailRu);
 
-            Assert.AreEqual(1, 1);
+            bool condition = IsHomePage is InboxPage;
+
+            Assert.IsTrue(condition);
         }
 
         [Test]
-        [TestCase("qwsfiuahroisdfsdfscvferlwer12344", "]'/mnbvcxsertyjklp987t--")]
-        [TestCase("", "")]
-        public void IncorrectLogin_ReturnTrue_Tests(string login, string password)
+        public void IncorrectLogin_ReturnTrue_Tests()
         {
-            var user = new User(login, password);
+            var user = UserCreator.UserInvalidLoginMailRu;
             var autorizationPage = new AutorizationPage(_webDriver);
             autorizationPage.InputLogin(user.Login);
 
@@ -41,23 +33,26 @@ namespace MailWebDriverTests
         }
 
         [Test]
-        [TestCase("alisap_etrova1992@mail.ru", "qweqwesfsvtrterwwef")]
-        [TestCase("alisap_etrova1992@mail.ru", "")]
-        public void IncorrectLogin_ReturnTrues_Tests(string login, string password)
+        public void IncorrectPassword_ReturnTrue_Tests()
         {
-            var user = new User(login, password);
             var autorizationPage = new AutorizationPage(_webDriver);
-            autorizationPage.InputLogin(user.Password);
+            var inboxPage = autorizationPage.LoginAs(UserCreator.UserInvalidPasswordMailRu);
+
+
+            bool condition = autorizationPage.IsErrorDisplayed();
+            Assert.IsTrue(condition);
+        }
+
+        [Test]
+        public void EmptyLogin_ReturnTrue_Tests()
+        {
+            var user = UserCreator.UserEmptyMailRU;
+            var autorizationPage = new AutorizationPage(_webDriver);
+            autorizationPage.InputLogin(user.Login);
 
             bool condition = autorizationPage.IsErrorDisplayed();
 
             Assert.IsTrue(condition);
-        }
-
-        [TearDown]
-        public void Quit()
-        {
-            _webDriver.Quit();
         }
     }
 }

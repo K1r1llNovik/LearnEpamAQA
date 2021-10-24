@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using MailAutomationFrameWork;
 using MailAutomationFrameWork.Base;
 using OpenQA.Selenium;
@@ -13,7 +14,6 @@ namespace MailAutomationFrameWork.MailServices.MailRu
         private readonly By _passwordInput = By.XPath("//input[@name='password']");
         private readonly By _signInButton = By.XPath("//button[@data-testid='login-to-mail']");
         private readonly By _errorMessage = By.XPath("//div[@class='error svelte-1tib0qz']");
-        private readonly string _title = "Mail.ru: почта, поиск в интернете, новости, игры";
 
         private const string _path = "https://mail.ru/";
 
@@ -27,7 +27,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
         protected override void WaitPageLoading()
         {
             Waiter.WaitPageLoading();
-            Waiter.WaitTitleContain(_title);
+            Waiter.WaitElementIsVisible(_accountNameInput);
         }
 
         public AutorizationPage InputLogin(string login)

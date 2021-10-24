@@ -4,12 +4,12 @@ using OpenQA.Selenium.Chrome;
 using MailAutomationFrameWork.Base;
 using MailAutomationFrameWork.MailServices.MailRu;
 using MailAutomationFrameWork.MailServices.Yandex;
+using MailAutomationFrameWork.Service;
 
 namespace MailWebDriverTests
 {
-    public class SendLetterTests
+    public class SendLetterTests : CommonCondition
     {
-        private IWebDriver _webDriver;
         public User validMailRuUser;
         public User validYandexUser;
         public Letter sendLetter;
@@ -19,14 +19,13 @@ namespace MailWebDriverTests
         public void Setup()
         {
             _webDriver = new ChromeDriver();
-            validMailRuUser = new User("alisap_etrova1992@mail.ru", "bgtvfrcdexswzaq15");
-            validYandexUser = new User("johnwheeck2001@yandex.by", "qazwsxedcrfvtgb15");
-            sendLetter = new Letter("johnwheeck2001@yandex.by", "Hello My Friend");
-            replyLetter = new Letter("alisap_etrova1992@mail.ru", "NewNickName123");
+            validMailRuUser = UserCreator.UserMailRu;
+            validYandexUser = UserCreator.UserYandex;
+            sendLetter = LetterCreator.SendLetter;
+            replyLetter = LetterCreator.ReplyLetter;
         }
 
         [Test]
-        [Order(1)]
         public void SendLetterTest_IsNotReadAndCorrectEmailText()
         {
             var defaultMailRu = new MailAutomationFrameWork.MailServices.MailRu.AutorizationPage(_webDriver).LoginAs(validMailRuUser)
@@ -51,8 +50,8 @@ namespace MailWebDriverTests
 
             openInbox.ReplyLetter(replyLetter.LettersText);
         }
+
         [Test]
-        [Order(2)]
         public void ChangeNickName_Test()
         {
             var mailRuDriver = new MailAutomationFrameWork.MailServices.MailRu.AutorizationPage(_webDriver).LoginAs(validMailRuUser);
@@ -60,12 +59,6 @@ namespace MailWebDriverTests
             string nickName = mailRuDriver.OpenLastIncomingLetter().GetTextInLetter();
 
             Assert.AreEqual(nickName, mailRuDriver.OpenPersonalData().ChangeNickName(nickName).GetNickName());
-        }
-
-        [TearDown]
-        public void Tests_TearDown()
-        {
-            _webDriver.Quit();
         }
     }
 }
