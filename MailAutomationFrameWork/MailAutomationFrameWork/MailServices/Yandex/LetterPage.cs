@@ -2,6 +2,7 @@
 using MailAutomationFrameWork;
 using MailAutomationFrameWork.Base;
 using OpenQA.Selenium;
+using NLog;
 
 namespace MailAutomationFrameWork.MailServices.Yandex
 {
@@ -12,6 +13,7 @@ namespace MailAutomationFrameWork.MailServices.Yandex
         private readonly By _answerButton = By.XPath("//div[@data-params='source=toolbar']//span[text()='Ответить']");
         private readonly By _ansewInput = By.XPath("//div[contains(@class,'context_menu')]//div[1]");
         private readonly By _sendButton = By.XPath("//button[@class='Button2 Button2_pin_circle-circle Button2_view_default Button2_size_l']");
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         public LetterPage(IWebDriver webDriver) : base(webDriver)
         {
             WaitPageLoading();
@@ -39,6 +41,7 @@ namespace MailAutomationFrameWork.MailServices.Yandex
         {
             Waiter.WaitElementToBeClickable(_answerButton);
             Driver.FindElement(_answerButton).Click();
+            _logger.Info("Click on reply letter button");
             return this;
         }
 
@@ -53,6 +56,7 @@ namespace MailAutomationFrameWork.MailServices.Yandex
         {
             Waiter.WaitElementToBeClickable(_sendButton);
             Driver.FindElement(_sendButton).Click();
+            _logger.Info("Click on send letter button");
             return this;
         }
 

@@ -3,6 +3,7 @@ using System.Threading;
 using MailAutomationFrameWork;
 using MailAutomationFrameWork.Base;
 using OpenQA.Selenium;
+using NLog;
 
 namespace MailAutomationFrameWork.MailServices.MailRu
 {
@@ -14,6 +15,8 @@ namespace MailAutomationFrameWork.MailServices.MailRu
         private readonly By _passwordInput = By.XPath("//input[@name='password']");
         private readonly By _signInButton = By.XPath("//button[@data-testid='login-to-mail']");
         private readonly By _errorMessage = By.XPath("//div[@class='error svelte-1tib0qz']");
+
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         private const string _path = "https://mail.ru/";
 
@@ -36,7 +39,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
             Driver.FindElement(_accountNameInput).SendKeys(login);
             Waiter.WaitElementToBeClickable(_furtherButton);
             Driver.FindElement(_furtherButton).Click();
-
+            _logger.Info("Input login");
             return this;
         }
 
@@ -46,6 +49,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
             Driver.FindElement(_passwordInput).SendKeys(password);
             Waiter.WaitElementToBeClickable(_signInButton);
             Driver.FindElement(_signInButton).Click();
+            _logger.Info("Input password");
 
             return new InboxPage(Driver);
         }

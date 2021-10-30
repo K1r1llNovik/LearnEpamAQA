@@ -2,6 +2,7 @@
 using MailAutomationFrameWork;
 using MailAutomationFrameWork.Base;
 using OpenQA.Selenium;
+using NLog;
 
 namespace MailAutomationFrameWork.MailServices.MailRu
 {
@@ -12,7 +13,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
         private readonly By _writeAMessageButton = By.XPath("//span[@class='compose-button__txt']");
         private readonly By _sideBarWithPersonalDataButton = By.XPath("//div[@data-testid='whiteline-account']");
         private readonly By _personalDataButton = By.XPath("//div[text()='Личные данные']");
-        private readonly string _title = "Входящие - Почта Mail.ru";
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public InboxPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -30,6 +31,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
             Driver.FindElement(_sideBarWithPersonalDataButton).Click();
             Waiter.WaitElementToBeClickable(_personalDataButton);
             Driver.FindElement(_personalDataButton).Click();
+            _logger.Info("Open personal data page");
 
             return new PersonalDataPage(Driver);
         }
@@ -38,6 +40,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
         {
             Waiter.WaitElementIsVisible(_lastIncomingLetter);
             Driver.FindElement(_lastIncomingLetter).Click();
+            _logger.Info("Open last incoming letter");
             return this;
         }
 
@@ -51,6 +54,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
         {
             Waiter.WaitElementToBeClickable(_writeAMessageButton);
             Driver.FindElement(_writeAMessageButton).Click();
+            _logger.Info("Open write a letter page");
 
             return new WriteLetterPage(Driver);
         }

@@ -2,15 +2,16 @@
 using MailAutomationFrameWork;
 using MailAutomationFrameWork.Base;
 using OpenQA.Selenium;
+using NLog;
 
 namespace MailAutomationFrameWork.MailServices.Yandex
 {
     public class AutorizationPage : BasePage
     {
-        private readonly string _path = "https://passport.yandex.ru/";
         private readonly By _loginInput = By.XPath("//input[@data-t='field:input-login']");
         private readonly By _passwordInput = By.XPath("//input[@data-t='field:input-passwd']");
         private readonly By _furtherButton = By.XPath("//button[@id='passp:sign-in']");
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         public AutorizationPage(IWebDriver webDriver) : base(webDriver)
         {
             WaitPageLoading();
@@ -28,6 +29,7 @@ namespace MailAutomationFrameWork.MailServices.Yandex
             Driver.FindElement(_loginInput).SendKeys(login);
             Waiter.WaitElementToBeClickable(_furtherButton);
             Driver.FindElement(_furtherButton).Click();
+            _logger.Info("Type login in yandex mail");
             return this;
         }
 
@@ -37,6 +39,7 @@ namespace MailAutomationFrameWork.MailServices.Yandex
             Driver.FindElement(_passwordInput).SendKeys(password);
             Waiter.WaitElementToBeClickable(_furtherButton);
             Driver.FindElement(_furtherButton).Click();
+            _logger.Info("Type paswword in yandex mail");
             return new InboxPage(Driver);
         }
 

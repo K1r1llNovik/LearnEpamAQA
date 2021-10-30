@@ -2,6 +2,7 @@
 using MailAutomationFrameWork;
 using MailAutomationFrameWork.Base;
 using OpenQA.Selenium;
+using NLog;
 
 namespace MailAutomationFrameWork.MailServices.MailRu
 {
@@ -9,6 +10,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
     {
         private readonly By _nickNameInput = By.XPath("//input[@data-test-id='nickname-field-input']");
         private readonly By _saveButton = By.XPath("//button[@data-test-id='save-button']");
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         public PersonalDataPage(IWebDriver webDriver) : base(webDriver)
         {
             WaitPageLoading();
@@ -27,6 +29,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
             Driver.FindElement(_nickNameInput).SendKeys(nickName);
             Waiter.WaitElementToBeClickable(_saveButton);
             Driver.FindElement(_saveButton).Click();
+            _logger.Info("Change nickname");
             return this;
         }
 

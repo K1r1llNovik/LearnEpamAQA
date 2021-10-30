@@ -2,6 +2,7 @@
 using MailAutomationFrameWork;
 using MailAutomationFrameWork.Base;
 using OpenQA.Selenium;
+using NLog;
 
 namespace MailAutomationFrameWork.MailServices.MailRu
 {
@@ -11,6 +12,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
         private readonly By _letterInput = By.XPath("//br/parent::div");
         private readonly By _sendButton = By.XPath("//span[text()='Отправить']");
         private readonly By _closeLayerWindowButton = By.XPath("//div[@class='layer__controls']/span");
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         public WriteLetterPage(IWebDriver webDriver) : base(webDriver)
         {
             WaitPageLoading();
@@ -25,6 +27,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
         public WriteLetterPage TypeRecieverName(string recieverName)
         {
             Driver.FindElement(_recieverInput).SendKeys(recieverName);
+            _logger.Info("Type reciever name");
             return this;
         }
 
@@ -32,6 +35,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
         {
             Waiter.WaitElementIsVisible(_letterInput);
             Driver.FindElement(_letterInput).SendKeys(letter);
+            _logger.Info("Type letter");
 
             return this;
         }
@@ -40,6 +44,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
         {
             Waiter.WaitElementToBeClickable(_sendButton);
             Driver.FindElement(_sendButton).Click();
+            _logger.Info("Click on send button");
 
             return this;
         }
@@ -49,6 +54,8 @@ namespace MailAutomationFrameWork.MailServices.MailRu
             Waiter.WaitElementToBeClickable(_closeLayerWindowButton);
 
             Driver.FindElement(_closeLayerWindowButton).Click();
+
+            _logger.Info("Close layer window");
 
             return new InboxPage(Driver);
         }

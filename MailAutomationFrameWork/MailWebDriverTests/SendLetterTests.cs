@@ -10,15 +10,9 @@ namespace MailWebDriverTests
 {
     public class SendLetterTests : CommonCondition
     {
-        public User validMailRuUser;
-        public User validYandexUser;
-        public Letter sendLetter;
-        public Letter replyLetter;
-
         [SetUp]
         public void Setup()
         {
-            _webDriver = new ChromeDriver();
             validMailRuUser = UserCreator.UserMailRu;
             validYandexUser = UserCreator.UserYandex;
             sendLetter = LetterCreator.SendLetter;
@@ -26,6 +20,7 @@ namespace MailWebDriverTests
         }
 
         [Test]
+        [Category("All")]
         public void SendLetterTest_IsNotReadAndCorrectEmailText()
         {
             var defaultMailRu = new MailAutomationFrameWork.MailServices.MailRu.AutorizationPage(_webDriver).LoginAs(validMailRuUser)
@@ -47,18 +42,6 @@ namespace MailWebDriverTests
 
             string email = openInbox.GetSenderEmail();
             Assert.AreEqual(validMailRuUser.Login, email);
-
-            openInbox.ReplyLetter(replyLetter.LettersText);
-        }
-
-        [Test]
-        public void ChangeNickName_Test()
-        {
-            var mailRuDriver = new MailAutomationFrameWork.MailServices.MailRu.AutorizationPage(_webDriver).LoginAs(validMailRuUser);
-
-            string nickName = mailRuDriver.OpenLastIncomingLetter().GetTextInLetter();
-
-            Assert.AreEqual(nickName, mailRuDriver.OpenPersonalData().ChangeNickName(nickName).GetNickName());
         }
     }
 }
