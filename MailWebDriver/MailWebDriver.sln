@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailWebDriver", "MailWebDriver\MailWebDriver.csproj", "{896094B0-03CF-4034-8713-B2A181EAADE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailWebDriverTests", "MailWebDriverTests\MailWebDriverTests.csproj", "{E6E8311F-C613-4609-AEDE-546F47686040}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{896094B0-03CF-4034-8713-B2A181EAADE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{896094B0-03CF-4034-8713-B2A181EAADE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{896094B0-03CF-4034-8713-B2A181EAADE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{896094B0-03CF-4034-8713-B2A181EAADE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6E8311F-C613-4609-AEDE-546F47686040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E8311F-C613-4609-AEDE-546F47686040}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E8311F-C613-4609-AEDE-546F47686040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E8311F-C613-4609-AEDE-546F47686040}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F3D2451-0648-4272-BEE2-A89D7A1B1584}
+	EndGlobalSection
+EndGlobal
