@@ -25,8 +25,11 @@ namespace MailAutomationFrameWork.Driver
                         _webDriver = new OperaDriver();
                         break;
                     default:
+                        var options = new ChromeOptions();
+                        options.AddArgument("--start-maximized");
+                        options.AddArgument("--disable-popup-blocking");
                         new DriverManager().SetUpDriver(new ChromeConfig());
-                        _webDriver = new ChromeDriver();
+                        _webDriver = new ChromeDriver(options);     
                         break;
                 }
                 _webDriver.Manage().Window.Maximize();
