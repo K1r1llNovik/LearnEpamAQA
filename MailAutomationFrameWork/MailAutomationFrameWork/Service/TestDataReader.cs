@@ -9,7 +9,7 @@ namespace MailAutomationFrameWork.Service
 {
     public class TestDataReader
     {
-        private static string _filePath = "/MailAutomationFrameWork/MailAutomationFrameWork/Resources/";
+        private static string _filePath = "../../../../MailAutomationFrameWork/Resources/";
         private static string _environment = TestContext.Parameters["environment"];
 
         public static string GetTestData(string key)
