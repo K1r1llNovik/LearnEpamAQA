@@ -10,7 +10,7 @@ namespace MailAutomationFrameWork.MailServices.MailRu
     {
         private readonly By _recivedLetterText = By.XPath("//div[contains(@class,'letter-body')]//div[contains(@class,'body-content')]");
         private readonly By _lastIncomingLetter = By.XPath("//div[@class='dataset__items']//a[contains(@class,'letter-bottom')][1]");
-        private readonly By _writeAMessageButton = By.XPath("//span[@class='compose-button__txt']");
+        private readonly By _writeAMessageButton = By.XPath("//span[@class='compose-button__wrapper']");
         private readonly By _sideBarWithPersonalDataButton = By.XPath("//div[@data-testid='whiteline-account']");
         private readonly By _personalDataButton = By.XPath("//div[text()='Личные данные']");
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
