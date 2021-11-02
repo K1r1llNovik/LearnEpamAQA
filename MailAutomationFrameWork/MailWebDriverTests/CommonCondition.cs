@@ -25,9 +25,8 @@ namespace MailWebDriverTests
         public void TearDrown()
         {
             if (TestContext.CurrentContext.Result.Outcome == ResultState.Failure
-                || TestContext.CurrentContext.Result.Outcome == ResultState.Failure)
+                || TestContext.CurrentContext.Result.Outcome == ResultState.Error)
             {
-            System.Threading.Thread.Sleep(5000);
                 new ScreenShoter().TakeScreenshot(_webDriver);
             }
 
