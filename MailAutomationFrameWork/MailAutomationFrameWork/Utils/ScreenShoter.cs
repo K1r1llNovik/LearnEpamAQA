@@ -14,7 +14,7 @@ namespace MailAutomationFrameWork.Utils
 
         public string CreateLocation()
         {
-            string saveLocation = "/ScreenShots/";
+            string saveLocation = ".//screenshots/";
 
             if (!Directory.Exists(saveLocation))
             {

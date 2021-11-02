@@ -27,6 +27,7 @@ namespace MailWebDriverTests
             if (TestContext.CurrentContext.Result.Outcome == ResultState.Failure
                 || TestContext.CurrentContext.Result.Outcome == ResultState.Failure)
             {
+            System.Threading.Thread.Sleep(5000);
                 new ScreenShoter().TakeScreenshot(_webDriver);
             }
 
