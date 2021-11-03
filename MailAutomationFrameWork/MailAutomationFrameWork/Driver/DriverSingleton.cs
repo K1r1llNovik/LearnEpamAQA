@@ -20,6 +20,10 @@ namespace MailAutomationFrameWork.Driver
             {
                 switch (TestContext.Parameters["browser"])
                 {
+                    case "opera":
+                        new DriverManager().SetUpDriver(new OperaConfig());
+                        _webDriver = new OperaDriver();
+                        break;
                     default:
                         new DriverManager().SetUpDriver(new ChromeConfig());
                         _webDriver = new ChromeDriver();
