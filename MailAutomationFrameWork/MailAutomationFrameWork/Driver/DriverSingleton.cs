@@ -20,19 +20,9 @@ namespace MailAutomationFrameWork.Driver
             {
                 switch (TestContext.Parameters["browser"])
                 {
-                    case "opera":
-                        var optionsOpera = new OperaOptions();
-                        optionsOpera.AddArgument("--start-maximized");
-                        optionsOpera.AddArgument("--disable-popup-blocking");
-                        new DriverManager().SetUpDriver(new OperaConfig());
-                        _webDriver = new OperaDriver(optionsOpera);
-                        break;
                     default:
-                        var optionsChrome = new ChromeOptions();
-                        optionsChrome.AddArgument("--start-maximized");
-                        optionsChrome.AddArgument("--disable-popup-blocking");
                         new DriverManager().SetUpDriver(new ChromeConfig());
-                        _webDriver = new ChromeDriver(optionsChrome);
+                        _webDriver = new ChromeDriver();
                         break;
                 }
                 _webDriver.Manage().Window.Maximize();
