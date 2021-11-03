@@ -38,7 +38,6 @@ namespace MailWebDriverTests
 
         [Test]
         [Category("All")]
-        [Category("Smoke")]
         public void IncorrectPassword_ReturnTrue_Tests()
         {
             var autorizationPage = new AutorizationPage(_webDriver);
@@ -51,7 +50,6 @@ namespace MailWebDriverTests
 
         [Test]
         [Category("All")]
-        [Category("Smoke")]
         public void EmptyLogin_ReturnTrue_Tests()
         {
             var user = UserCreator.UserEmptyMailRU;
