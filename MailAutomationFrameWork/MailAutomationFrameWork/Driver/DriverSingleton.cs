@@ -16,7 +16,7 @@ namespace MailAutomationFrameWork.Driver
 
         public static IWebDriver GetDriver()
         {
-            if(_webDriver == null)
+            if (_webDriver == null)
             {
                 switch (TestContext.Parameters["browser"])
                 {
@@ -32,7 +32,7 @@ namespace MailAutomationFrameWork.Driver
                         optionsChrome.AddArgument("--start-maximized");
                         optionsChrome.AddArgument("--disable-popup-blocking");
                         new DriverManager().SetUpDriver(new ChromeConfig());
-                        _webDriver = new ChromeDriver(optionsChrome);     
+                        _webDriver = new ChromeDriver(optionsChrome);
                         break;
                 }
                 _webDriver.Manage().Window.Maximize();
@@ -45,6 +45,5 @@ namespace MailAutomationFrameWork.Driver
             _webDriver.Quit();
             _webDriver = null;
         }
-
     }
 }
