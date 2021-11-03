@@ -12,6 +12,7 @@ namespace MailAutomationFrameWork.MailServices.Yandex
         private readonly By _passwordInput = By.XPath("//input[@data-t='field:input-passwd']");
         private readonly By _furtherButton = By.XPath("//button[@id='passp:sign-in']");
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
         public AutorizationPage(IWebDriver webDriver) : base(webDriver)
         {
             WaitPageLoading();
