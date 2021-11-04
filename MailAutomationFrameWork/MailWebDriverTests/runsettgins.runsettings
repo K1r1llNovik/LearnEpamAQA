@@ -3,5 +3,6 @@
   <TestRunParameters>
     <Parameter name="browser" value="chrome" />
     <Parameter name="environment" value="qa" />
+    <Parameter name="waittime" value="15000" />
   </TestRunParameters>
 </RunSettings>

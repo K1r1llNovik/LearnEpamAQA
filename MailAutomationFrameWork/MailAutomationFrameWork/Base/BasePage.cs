@@ -1,15 +1,13 @@
 ﻿using System;
 using MailAutomationFrameWork;
 using OpenQA.Selenium;
+using NUnit.Framework;
 
 namespace MailAutomationFrameWork.Base
 {
     public abstract class BasePage
     {
-        /// <summary>
-        /// Wait time, measured in milliseconds.
-        /// </summary>
-        private readonly int _waitTime = 20000;
+        private readonly int _waitTime = int.Parse(TestContext.Parameters["waittime"]);
 
         public IWebDriver Driver { get; set; }
 
