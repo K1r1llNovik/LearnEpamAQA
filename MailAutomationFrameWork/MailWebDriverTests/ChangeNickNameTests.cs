@@ -8,7 +8,7 @@ using MailAutomationFrameWork.Service;
 
 namespace MailWebDriverTests
 {
-    public class ChangeNickNameTests : CommonCondition
+    public class ChangeNickNameTests : BaseTest
     {
         [SetUp]
         public void Setup()

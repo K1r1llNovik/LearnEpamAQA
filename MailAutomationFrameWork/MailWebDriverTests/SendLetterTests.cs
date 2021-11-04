@@ -8,7 +8,7 @@ using MailAutomationFrameWork.Service;
 
 namespace MailWebDriverTests
 {
-    public class SendLetterTests : CommonCondition
+    public class SendLetterTests : BaseTest
     {
         [SetUp]
         public void Setup()

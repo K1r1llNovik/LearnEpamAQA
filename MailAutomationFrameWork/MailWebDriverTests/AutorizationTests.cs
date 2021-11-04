@@ -7,7 +7,7 @@ using MailAutomationFrameWork.Service;
 
 namespace MailWebDriverTests
 {
-    public class AutorizationTests : CommonCondition
+    public class AutorizationTests : BaseTest
     {
         [Test]
         [Category("All")]

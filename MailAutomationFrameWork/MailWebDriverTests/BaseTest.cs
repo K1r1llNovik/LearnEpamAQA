@@ -7,7 +7,7 @@ using MailAutomationFrameWork.Base;
 
 namespace MailWebDriverTests
 {
-    public class CommonCondition
+    public class BaseTest
     {
         protected IWebDriver _webDriver;
         public User validMailRuUser;
